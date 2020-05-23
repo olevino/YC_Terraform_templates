@@ -1,0 +1,51 @@
+{
+  "variables": {
+    "service_account_key_file": "<path to file with service_account_key>",
+    "folder_id": "<Yandex.Cloud folder id>",
+  },
+  "builders": [
+    {
+      "type": "yandex",
+      "endpoint": "{{user `endpoint`}}",
+      "folder_id": "{{user `folder_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "zone": "{{user `zone`}}",
+      "labels": {},
+      "use_ipv4_nat": true,
+      "use_internal_ip": false,
+      "service_account_key_file": "{{user `service_account_key_file`}}",
+      "image_name": "grafana-{{timestamp}}",
+      "image_family": "grafana",
+      "image_labels": {},
+      "image_description": "GRAFANA",
+      "source_image_family": "ubuntu-1804-lts",
+      "disk_size_gb": 3,
+      "disk_type": "network-hdd",
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+	{
+            "type": "shell",
+            "pause_before": "5s",
+            "scripts": [
+                "prepare-ctg.sh"
+            ]
+        },
+	{
+            "type": "file",
+            "source": "setup.sh",
+            "destination": "/opt/grafana/setup.sh"
+        },
+        {
+            "type": "shell",
+	    "execute_command": "sudo {{ .Vars }} bash '{{ .Path }}'",
+            "pause_before": "5s",
+            "scripts": [
+                "install-packages.sh",
+                "grafana-setup.sh",
+                "run-setup-at-reboot.sh"
+	    ]
+        }
+  ]
+}

@@ -1,0 +1,31 @@
+name: High Available Grafana
+actions:
+  - packer
+  - terraform
+packer_source: grafana.json
+terraform_source: grafana.tf
+terraform_variables:
+  - name: oauth_token
+    type: string
+    description: "OAUTH-token to get access Yandex Cloud: https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb"
+  - name: cloud_id
+    type: string
+    description: "Identifier of cloud to create architecture at"
+  - name: folder_id
+    type: string
+    description: "Identifier of folder to create architecture at"
+  - name: service_account_id
+    type: string
+    description: "Identifier of service account in cloud"
+  - name: username
+    type: string
+    description: "User name to get access to architecture"
+  - name: password
+    type: string
+    description: "User password to get access to architecture"
+  - name: public_key
+    type: file
+    description: "public ssh key to get access to VMs"
+  - name: image_id
+    type: output
+
