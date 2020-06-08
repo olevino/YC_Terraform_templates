@@ -1,7 +1,7 @@
 {
   "variables": {
     "service_account_key_file": "<path to file with service_account_key>",
-    "folder_id": "<Yandex.Cloud folder id>",
+    "folder_id": "<Yandex.Cloud folder id>"
   },
   "builders": [
     {
