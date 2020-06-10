@@ -1,6 +1,5 @@
 name: High Available Grafana
 description: MySQL + Clickhouse + Grafana
-terraform_source: grafana.tf
 terraform_variables:
   - name: oauth_token
     type: string
@@ -23,9 +22,6 @@ terraform_variables:
   - name: public_key
     type: file
     description: "Public ssh key to get access to VMs"
-  - name: image_id
-    type: output
 terraform_outputs:
   - grafana_balancer_ip_address
   - clickhouse_cluster_host
-

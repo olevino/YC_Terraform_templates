@@ -1,6 +1,46 @@
+variable "oauth_token" {
+    type = string
+    default = "<oauth-token>"
+}
+
+variable "cloud_id" {
+    type = string
+    default = "<cloud-id>"
+}
+
+variable "folder_id" {
+    type = string
+    default = "<folder_id>"
+}
+
+variable "username" {
+    type = string
+    default = "<username>"
+}
+
+variable "password" {
+    type = string
+    default = "<password>"
+}
+
+variable "public_key" {
+    type = string
+    default = "<path to ssh public key>"
+}
+
+variable "service_account_id" {
+    type = string
+    default = "<service_account_id>"
+}
+
 variable "dbname" {
     type = string
-    default = "grafanaDB"
+    default = "DBGrafana"
+}
+
+variable "image_id" {
+    type = string
+    default = "fd87uuu91tfgdpimc7re"
 }
 
 provider "yandex" {
