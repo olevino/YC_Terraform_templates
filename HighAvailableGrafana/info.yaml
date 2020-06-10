@@ -1,16 +1,5 @@
 name: High Available Grafana
 description: MySQL + Clickhouse + Grafana
-actions:
-  - packer
-  - terraform
-packer_source: grafana.json
-packer_variables:
-  - name: folder_id
-    type: string
-    description: "Identifier of folder to create architecture at"
-  - name: service_account_key
-    type: file
-    description: "Content of file with service account key. See: https://cloud.yandex.ru/docs/cli/operations/authentication/service-account"
 terraform_source: grafana.tf
 terraform_variables:
   - name: oauth_token
